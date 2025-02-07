@@ -2,3 +2,7 @@
 /.vscode
 /.fleet
 /.zed
+/__pycache__
+/output
+/lib
+/bin
