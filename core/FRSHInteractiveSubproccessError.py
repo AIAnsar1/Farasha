@@ -1,0 +1,6 @@
+
+
+
+
+class FRSHInteractiveSubproccessError(Exception):
+    pass
