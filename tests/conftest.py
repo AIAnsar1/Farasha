@@ -1,26 +1,22 @@
 import os, json, urllib, pytest
 import urllib.request
-from core.FRSHSitesInfo import FRSHSitesInfo
-
+from core.FRSHSitesInfo import FRSHSitesInformation
 
 
 @pytest.fixture()
-def sitesObj():
-    sitesObj = FRSHSitesInfo(dataFilePath=os.path.join(os.path.dirname(__file__), "../resources/data.json"))
-    yield sitesObj
-    
-    
+def sites_obj():
+    sites_obj = FRSHSitesInformation(data_file_path=os.path.join(os.path.dirname(__file__), "../sherlock_project/resources/data.json"))
+    yield sites_obj
+
 @pytest.fixture(scope="session")
-def sitesInfo():
-    sitesObj= FRSHSitesInfo(dataFilePath=os.path.join(os.path.dirname(__file__), "../resources/data.json"))
-    sitesIterable = {site.name: site.information for site in sitesObj}
-    yield sitesIterable
-    
-    
-    
+def sites_info():
+    sites_obj = FRSHSitesInformation(data_file_path=os.path.join(os.path.dirname(__file__), "../sherlock_project/resources/data.json"))
+    sites_iterable = {site.name: site.information for site in sites_obj}
+    yield sites_iterable
+
 @pytest.fixture(scope="session")
-def remoteSchema():
-    schemaUrl: str = "https://github.com/AIAnsar1/Farasha/resources/data.schema.json"
-    with urllib.request.urlopen(schemaUrl) as remotesSchema:
-        schemadat = json.load(remotesSchema)
+def remote_schema():
+    schema_url: str = 'https://raw.githubusercontent.com/sherlock-project/sherlock/master/sherlock_project/resources/data.schema.json'
+    with urllib.request.urlopen(schema_url) as remoteschema:
+        schemadat = json.load(remoteschema)
     yield schemadat
