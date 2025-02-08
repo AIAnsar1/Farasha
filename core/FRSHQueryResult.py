@@ -2,18 +2,18 @@
 
 
 class FRSHQueryResult():
-    def __init__(self, Username, SiteName, SiteUrlUser, Status, QueryTime=None, Context=None):
-        self.Username = Username
-        self.SiteName = SiteName
-        self.SiteUrlUser = SiteUrlUser
-        self.Status = Status
-        self.QueryTime = QueryTime
-        self.Context = Context
-        
-        
+    def __init__(self, username, site_name, site_url_user, status, query_time=None, context=None):
+        self.username      = username
+        self.site_name     = site_name
+        self.site_url_user = site_url_user
+        self.status        = status
+        self.query_time    = query_time
+        self.context       = context
+
+        return
+
     def __str__(self):
-        Status = str(self.Status)
-        
-        if self.Context is not None:
-            Status += f" ({self.Context})"
-        return Status
+        status = str(self.status)
+        if self.context is not None:
+            status += f" ({self.context})"
+        return status

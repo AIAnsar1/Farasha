@@ -8,5 +8,3 @@ __version__ = "1.1.0"
 
 forge_api_latest_release = "https://api.github.com/AiAnsar1/Farasha/releases/latest"
 
-
-results = 0
