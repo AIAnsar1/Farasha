@@ -80,13 +80,13 @@ def farasha(username: str,site_data: dict,query_notify: FRSHQueryNotify,tor: boo
             from torrequest import TorRequest
         except ImportError:
             print("[ INFO ]: Important!")
-            print("[ INFO ]: > --tor and --unique-tor are now DEPRECATED, and may be removed in a future release of Sherlock.")
-            print("[ INFO ]: > If you've installed Sherlock via pip, you can include the optional dependency via `pip install 'sherlock-project[tor]'`.")
+            print("[ INFO ]: > --tor and --unique-tor are now DEPRECATED, and may be removed in a future release of Farasha.")
+            print("[ INFO ]: > If you've installed Farasha via pip, you can include the optional dependency via `pip install 'Farasha[tor]'`.")
             print("[ INFO ]: > Other packages should refer to their documentation, or install it separately with `pip install torrequest`.\n")
             sys.exit(query_notify.finish())
 
         print("[ INFO ]: Important!")
-        print("[ INFO ]: > --tor and --unique-tor are now DEPRECATED, and may be removed in a future release of Sherlock.")
+        print("[ INFO ]: > --tor and --unique-tor are now DEPRECATED, and may be removed in a future release of Farasha.")
 
         try:
             underlying_request = TorRequest()

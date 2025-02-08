@@ -5,12 +5,12 @@ from core.FRSHSitesInfo import FRSHSitesInformation
 
 @pytest.fixture()
 def sites_obj():
-    sites_obj = FRSHSitesInformation(data_file_path=os.path.join(os.path.dirname(__file__), "../sherlock_project/resources/data.json"))
+    sites_obj = FRSHSitesInformation(data_file_path=os.path.join(os.path.dirname(__file__), "../resources/data.json"))
     yield sites_obj
 
 @pytest.fixture(scope="session")
 def sites_info():
-    sites_obj = FRSHSitesInformation(data_file_path=os.path.join(os.path.dirname(__file__), "../sherlock_project/resources/data.json"))
+    sites_obj = FRSHSitesInformation(data_file_path=os.path.join(os.path.dirname(__file__), "../resources/data.json"))
     sites_iterable = {site.name: site.information for site in sites_obj}
     yield sites_iterable
 
