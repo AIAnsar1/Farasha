@@ -1,18 +1,12 @@
-import sys, csv, signal, os, re, requests, pandas
-# from core import FRSHQueryStatus, FRSHQueryResult, FRSHQueryNotify, FRSHQueryNotifyPrint, FRSHSiteInfo, FRSHSitesInfo, FRSHFuturesSession
-from core.__init__ import __longname__, __shortname__, __version__, forge_api_latest_release
-from argparse import ArgumentParser, RawDescriptionHelpFormatter, ArgumentTypeError
-from json import loads
-from time import monotonic
+import sys, re, requests
+from core.__init__ import __longname__, __shortname__, __version__
+from argparse import ArgumentTypeError
 from typing import Optional
 from colorama import init
 
 from core.FRSHQueryStatus import FRSHQueryStatus
 from core.FRSHQueryResult import FRSHQueryResult
 from core.FRSHQueryNotify import FRSHQueryNotify
-from core.FRSHQueryNotifyPrint import FRSHQueryNotifyPrint
-#from core.FRSHSiteInfo import FRSHSiteInfo
-from core.FRSHSitesInfo import FRSHSitesInfo
 from core.FRSHFuturesSession import FRSHFuturesSession
 
 
