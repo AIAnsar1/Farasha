@@ -20,7 +20,7 @@ from core.FRSHFuturesSession import FRSHFuturesSession
 try:
     from core.__init__ import import_error_test_var
 except ImportError:
-    print("Did you run Sherlock with `python3 Farasha/farasha.py ...`?")
+    print("Did you run Farasha with `python3 Farasha/farasha.py ...`?")
     sys.exit(1)
     
     
@@ -364,7 +364,7 @@ def main():
             if args.json_file:
                 if args.jsonFile.isnumeric():
                     pullNumber = args.json_file
-                    pullUrl = f"https://github.com/AIAnsar1/Farasha"
+                    pullUrl = f"https://api.github.com/repos/AIAnsar1/Farasha/pulls/{pullNumber}"
                     pullRequestRaw = requests.get(pullUrl).text
                     pullRequestJson = loads(pullRequestRaw)
                     
@@ -372,7 +372,7 @@ def main():
                         print(f"ERROR: Pull request #{pullNumber} not found.")
                         sys.exit(1)
                     headCommitSha = pullRequestJson["head"]["sha"]
-                    jsonFileLocation = f"https://github.com/AIAnsar1/Farasha"
+                    jsonFileLocation = f"https://raw.githubusercontent.com/AIAnsar1/Farasha/{headCommitSha}/resources/data.json"
             sites = FRSHSitesInfo(jsonFileLocation)
     except Exception as error:
         print(f"[ ERROR ]:  {error}")

@@ -8,7 +8,7 @@ class FRSHSitesInfo():
     def __init__(self, dataFilePath):
         
         if not dataFilePath:
-            dataFilePath = "https://raw.githubusercontent.com/sherlock-project/sherlock/master/sherlock_project/resources/data.json"
+            dataFilePath = "https://raw.githubusercontent.com/AIAnsar1/Farasha/main/resources/data.json"
             
         if not dataFilePath.lower().endswith(".json"):
             raise FileNotFoundError(f"Incorrect JSON file extension for data file '{dataFilePath}'.")

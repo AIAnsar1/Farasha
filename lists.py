@@ -20,7 +20,7 @@ os.mkdir("output")
 
 
 with open("output/sites.mdx", "w") as siteF:
-    siteF.write("---\ntitle: 'List of supported sites'\nsidebarTitle: 'Supported sites'\nicon: 'globe'\ndescription: 'Sherlock currently supports **400+** sites'\n---\n\n")
+    siteF.write("---\ntitle: 'List of supported sites'\nsidebarTitle: 'Supported sites'\nicon: 'globe'\ndescription: 'Farasha currently supports **400+** sites'\n---\n\n")
     
     for social, info in socmed:
         url = info["urlMain"]
