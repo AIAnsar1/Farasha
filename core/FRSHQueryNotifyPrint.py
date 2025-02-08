@@ -18,7 +18,7 @@ class FRSHQueryNotifyPrint(FRSHQueryNotify):
     
     def start(self, message):
         title = "Checking username..."
-        print(Style.BRIGHT + Fore.GREEN + "[" + Fore.YELLOW + "*" + Fore.GREEN + f"] {title}" + Fore.WHITE + f" {message}" + Fore.GREEN + " on:")
+        print("[ INFO ]: " + Style.BRIGHT + Fore.GREEN + "[" + Fore.YELLOW + "*" + Fore.GREEN + f"] {title}" + Fore.WHITE + f" {message}" + Fore.GREEN + " on:")
         
     
     
@@ -34,7 +34,7 @@ class FRSHQueryNotifyPrint(FRSHQueryNotify):
         responseTimeText = ""
         
         if self.result.QueryTime is not None and self.verbose is True:
-            responseTimeText = f"[{round(self.result.query_time * 1000)} ms]"
+            responseTimeText = f"[ [ INFO ]: {round(self.result.query_time * 1000)} ms]"
             
         if result.status == FRSHQueryStatus.CLAIMED:
             self.countResults()
@@ -50,20 +50,20 @@ class FRSHQueryNotifyPrint(FRSHQueryNotify):
                 print(Style.BRIGHT + Fore.WHITE + "[" + Fore.RED + "-" + Fore.WHITE + "]" + Fore.GREEN + f" {self.result.site_name}:" + Fore.RED + f" {self.result.context}" + Fore.YELLOW + " ")
         elif result.status == FRSHQueryStatus.ILLEGAL:
             if self.printAll:
-                message = "Illegal Username Format For This Site!"
+                message = "[ INFO ]: Illegal Username Format For This Site!"
                 print(Style.BRIGHT + Fore.WHITE + "[" + Fore.RED + "-" + Fore.WHITE + "]" + Fore.GREEN + f" {self.result.site_name}:" + Fore.YELLOW + f" {message}")
         elif result.status == FRSHQueryStatus.WAF:
             if self.printAll:
                 print(Style.BRIGHT + Fore.WHITE + "[" + Fore.RED + "-" + Fore.WHITE + "]" + Fore.GREEN + f" {self.result.site_name}:" + Fore.RED + " Blocked by bot detection" + Fore.YELLOW + " (proxy may help)")
         else:
-            raise ValueError(f"Unknown Query Status '{result.status}' for site '{self.result.site_name}'")
+            raise ValueError(f"[ ERROR ]: Unknown Query Status '{result.status}' for site '{self.result.site_name}'")
         
         return
     
     
-    def finish(self, message="The processing has been finished."):
+    def finish(self, message="[ INFO ]: The processing has been finished."):
         NumberOfResults = self.countResults() - 1
-        print(Style.BRIGHT + Fore.GREEN + "[" + Fore.YELLOW + "*" + Fore.GREEN + "] Search completed with" + Fore.WHITE + f" {NumberOfResults} " + Fore.GREEN + "results" + Style.RESET_ALL)
+        print("[ INFO ]: " + Style.BRIGHT + Fore.GREEN + "[" + Fore.YELLOW + "*" + Fore.GREEN + "] Search completed with" + Fore.WHITE + f" {NumberOfResults} " + Fore.GREEN + "results" + Style.RESET_ALL)
         
         
     def __str__(self):

@@ -11,22 +11,22 @@ class FRSHSitesInfo():
             dataFilePath = "https://raw.githubusercontent.com/AIAnsar1/Farasha/main/resources/data.json"
             
         if not dataFilePath.lower().endswith(".json"):
-            raise FileNotFoundError(f"Incorrect JSON file extension for data file '{dataFilePath}'.")
+            raise FileNotFoundError(f"[ ERROR ]: Incorrect JSON file extension for data file '{dataFilePath}'.")
         
         if not dataFilePath.lower().startswith("http"):
             
             try:
                 response = requests.get(url=dataFilePath)
             except Exception as error:
-                raise FileNotFoundError(f"Problem while attempting to access data file URL '{dataFilePath}':  {error}")
+                raise FileNotFoundError(f"[ ERROR ]: Problem while attempting to access data file URL '{dataFilePath}':  {error}")
             
             if response.status_code != 200:
-                raise FileNotFoundError(f"Bad response while accessing " + f"data file URL '{dataFilePath}'.")
+                raise FileNotFoundError(f"[ ERROR ]: Bad response while accessing " + f"data file URL '{dataFilePath}'.")
             
             try:
                 siteData = response.json()
             except Exception as error:
-                raise ValueError(f"Problem parsing json contents at '{dataFilePath}':  {error}.")
+                raise ValueError(f"[ ERROR ]: Problem parsing json contents at '{dataFilePath}':  {error}.")
             
         else:
             try:
@@ -34,9 +34,9 @@ class FRSHSitesInfo():
                     try:
                         siteData = json.load(File)
                     except Exception as error:
-                        raise ValueError(f"Problem parsing json contents at '{dataFilePath}':  {error}.")
+                        raise ValueError(f"[ ERROR ]: Problem parsing json contents at '{dataFilePath}':  {error}.")
             except FileNotFoundError:
-                FileNotFoundError(f"Problem while attempting to access " + f"data file '{dataFilePath}'.")
+                FileNotFoundError(f"[ ERROR ]: Problem while attempting to access " + f"data file '{dataFilePath}'.")
         
         siteData.pop('$schema', None)
         self.sites = {}
@@ -45,9 +45,9 @@ class FRSHSitesInfo():
             try:
                 self.sites[siteName] = FRSHSiteInfo(siteName, siteData[siteName]["urlMain"], siteData[siteName]["url"], siteData[siteName]["username_claimed"], siteData[siteName], siteData[siteName].get("isNSFW",False))
             except KeyError as error:
-                raise ValueError(f"Problem parsing json contents at '{dataFilePath}':  Missing attribute {error}.")
+                raise ValueError(f"[ ERROR ]: Problem parsing json contents at '{dataFilePath}':  Missing attribute {error}.")
             except TypeError:
-                print(f"Encountered TypeError parsing json contents for target '{siteName}' at {dataFilePath}\nSkipping target.\n")
+                print(f"[ ERROR ]: Encountered TypeError parsing json contents for target '{siteName}' at {dataFilePath}\nSkipping target.\n")
                 
         return
     
